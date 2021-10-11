@@ -3,25 +3,22 @@ package com.company.calcium_collision;
 public class Main2 {
 
     public static void main(String[] args) {
-        erase_special_symbols("sfd#adf s sefa # sf >@< >#@< fsd ", new String[]{"#","@","<",">"});
+        eraseSpecialSymbols("sfd#adf s sefa # sf >@< >#@< fsd ", new String[]{"#","@","<",">"});
     }
 
-    public static void erase_special_symbols(String sentence, String[] symbols_to_erase) {
+    public static void eraseSpecialSymbols(String sentence, String[] symbolsToErase) {
 
-        String[] array_sentence = sentence.split("");
-        int offset = 0;
+        String[] arraySentence = sentence.split("");
 
         // Loop for every symbol
-        for (int i1 = 0; i1 < symbols_to_erase.length; i1++){
+        for (int i1 = 0; i1 < symbolsToErase.length; i1++){
 
             // Each loop to erase concrete symbol
-            for (int i2 = 0; i2 < array_sentence.length; i2++) {
-                if (symbols_to_erase[i1].equals(array_sentence[i2])){
+            for (int i2 = 0; i2 < arraySentence.length; i2++) {
+                if (symbolsToErase[i1].equals(arraySentence[i2])){
 
-
-                    sentence = sentence.substring(0,i2) + sentence.substring(i2+1, array_sentence.length);
-                    array_sentence = sentence.split("");
-                    ++offset;
+                    sentence = sentence.substring(0,i2) + sentence.substring(i2+1, arraySentence.length);
+                    arraySentence = sentence.split("");
 
                 }
             }
