@@ -1,37 +1,27 @@
 package com.company.calcium_collision;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
-        eraseSpecialSymbols("sfd#adf s sefa # sf >@< >#@< fsd ", new String[]{"#","@","<",">"});
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("Write some sentence:");
+        String someSentence = in.nextLine();
+        System.out.println("Ok. Now write symbols to erase e.g. !@#$&^)({}");
+        String symbolsErase = in.nextLine();
+
+        System.out.println(eraseSpecialSymbols(someSentence, symbolsErase));
+
     }
 
-    public static void eraseSpecialSymbols(String sentence, String[] symbolsToErase) {
+    public static String eraseSpecialSymbols(String sentence, String symbolsToErase) {
 
-        String[] arraySentence = sentence.split("");
-        String cleanSentence = "";
-
-        // Loop for every symbol
-        for (int i = 0; i < symbolsToErase.length; i++){
-
-            // Each loop to erase concrete symbol
-            for (int j = 0; j < arraySentence.length; j++) {
-                if (!symbolsToErase[i].equals(arraySentence[j])){
-                    cleanSentence += arraySentence[j];
-
-                }
-            }
-
-            // Update 'arraySentence' variable
-            arraySentence = cleanSentence.split("");
-
-            // Clear 'cleanSentence' if its not last loop
-            if (i != symbolsToErase.length - 1){
-                cleanSentence = "";
-            }
+        for (char eraseSymbol: symbolsToErase.toCharArray()){
+            sentence = sentence.replace(Character.toString(eraseSymbol), "");
         }
-
-        System.out.println(cleanSentence);
+        return sentence;
     }
 
 }
